@@ -1,0 +1,32 @@
+version : '3'
+services:
+  mongodb:
+    image: mongo
+    ports: 
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mymongo-data-one:/data/db  
+      # - mymongo-data-two:/data/db       #/data/db is thedefault path for mongodb, for postgres it will be differennt, for mysql also it will be different
+  mongo-express:
+    image: mongo-express
+    restart : always            #mongo express is relied on mongodb, so restart this until it establish a connection
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+volumes:
+  mymongo-data-one:
+    driver: local
+  # mymongo-data-two:
+  #   driver: local
+
+
+
+
+
+#here no need to create docker compose here, because whenever a docker compose comesup, all of the docker containers in on the docker compose, automatically docor compose creates a new network and put all of your containers in that... That is default and that is happening 
