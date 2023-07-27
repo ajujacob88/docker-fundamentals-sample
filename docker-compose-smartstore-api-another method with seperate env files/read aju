@@ -1,0 +1,19 @@
+here there is a .env file prsent in this folder, but its hidden, either show hidden files in ubuntu or open this folder in vs code
+
+To run this
+FIrst start the docker
+Then open a terminal window from this folder, after that just run the command "docker compose up" or "docker compose up -d" for detached mode
+
+to make it stop
+docker compose down
+
+if its showning error for port 5432 is already running then use the below command
+
+//to stop the service that is running in the port
+systemctl stop postgresql
+
+
+//to check what is running in port
+sudo lsof -i :5432
+
+
